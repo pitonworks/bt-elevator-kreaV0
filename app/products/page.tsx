@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { Filter, Search } from 'lucide-react';
 import { useState } from 'react';
+import Image from 'next/image';
 
 const products = [
   {
@@ -10,7 +11,7 @@ const products = [
     name: 'BT-5000 Control System',
     category: 'Control Systems',
     description: 'Advanced elevator control system with integrated safety features and energy efficiency.',
-    image: '/images/products/control-system-1.jpg',
+    image: '/images/products/control-system-1.jpeg',
     features: ['Energy efficient', 'Advanced safety protocols', 'Remote monitoring', 'Compact design'],
     slug: 'bt-5000-control-system'
   },
@@ -19,7 +20,7 @@ const products = [
     name: 'BT-3000 Control Panel',
     category: 'Control Systems',
     description: 'Mid-range control panel suitable for residential and small commercial buildings.',
-    image: '/images/products/control-system-2.jpg',
+    image: '/images/products/control-system-2.jpeg',
     features: ['User-friendly interface', 'Reliable performance', 'Easy installation', 'Cost-effective'],
     slug: 'bt-3000-control-panel'
   },
@@ -28,7 +29,7 @@ const products = [
     name: 'BT-EC100 Main Controller Card',
     category: 'Electronic Cards',
     description: 'Main controller card with advanced processing capabilities for smooth elevator operation.',
-    image: '/images/products/electronic-card-1.jpg',
+    image: '/images/products/electronic-card-1.jpeg',
     features: ['High processing power', 'Multiple I/O ports', 'Expandable memory', 'Diagnostic LEDs'],
     slug: 'bt-ec100-main-controller-card'
   },
@@ -37,7 +38,7 @@ const products = [
     name: 'BT-EC200 Floor Indicator Card',
     category: 'Electronic Cards',
     description: 'Electronic card for floor indication with customizable display options.',
-    image: '/images/products/electronic-card-2.jpg',
+    image: '/images/products/electronic-card-2.jpeg',
     features: ['Customizable display', 'Low power consumption', 'Multiple display modes', 'Easy configuration'],
     slug: 'bt-ec200-floor-indicator-card'
   },
@@ -46,7 +47,7 @@ const products = [
     name: 'BT-Elevator Monitor',
     category: 'Software Solutions',
     description: 'Comprehensive monitoring software for real-time elevator performance tracking.',
-    image: '/images/products/software-1.jpg',
+    image: '/images/products/software-1.jpeg',
     features: ['Real-time monitoring', 'Performance analytics', 'Maintenance alerts', 'Mobile compatibility'],
     slug: 'bt-elevator-monitor'
   },
@@ -55,7 +56,7 @@ const products = [
     name: 'BT-Maintenance Scheduler',
     category: 'Software Solutions',
     description: 'Software solution for scheduling and tracking maintenance activities.',
-    image: '/images/products/software-2.jpg',
+    image: '/images/products/software-2.jpeg',
     features: ['Automated scheduling', 'Maintenance history', 'Technician assignment', 'Report generation'],
     slug: 'bt-maintenance-scheduler'
   },
@@ -64,7 +65,7 @@ const products = [
     name: 'BT-D500 Motor Driver',
     category: 'Drivers & Components',
     description: 'High-performance motor driver for smooth and efficient elevator operation.',
-    image: '/images/products/component-1.jpg',
+    image: '/images/products/component-1.jpeg',
     features: ['High efficiency', 'Overload protection', 'Low noise operation', 'Compact design'],
     slug: 'bt-d500-motor-driver'
   },
@@ -73,7 +74,7 @@ const products = [
     name: 'BT-S100 Safety Circuit',
     category: 'Drivers & Components',
     description: 'Advanced safety circuit with redundant systems for maximum passenger protection.',
-    image: '/images/products/component-2.jpg',
+    image: '/images/products/component-2.jpeg',
     features: ['Redundant systems', 'Self-diagnostic', 'Fail-safe design', 'Regulatory compliant'],
     slug: 'bt-s100-safety-circuit'
   },
@@ -108,7 +109,7 @@ export default function ProductsPage() {
     <div className="bg-white dark:bg-gray-900">
       {/* Hero Section */}
       <div className="bg-blue-600 dark:bg-blue-800">
-        <div className="container mx-auto px-4 py-16 md:py-24">
+        <div className="container mx-auto px-4 py-16 md:py-24" style={{ marginTop: '6rem' }}>
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Our Products</h1>
             <p className="text-xl text-blue-100 mb-8">
@@ -163,12 +164,12 @@ export default function ProductsPage() {
                 <div className="h-48 bg-gray-200 dark:bg-gray-700 relative">
                   {/* Placeholder for product image */}
                   {/* Uncomment when images are available */}
-                  {/* <Image 
-                    src={product.image} 
-                    alt={product.name} 
-                    fill 
-                    className="object-cover" 
-                  /> */}
+                    <Image 
+                      src={product.image} 
+                      alt={product.name} 
+                      fill 
+                      className="object-cover" 
+                    />
                   <div className="absolute bottom-0 left-0 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-tr-md">
                     {product.category}
                   </div>

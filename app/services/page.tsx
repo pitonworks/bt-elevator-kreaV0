@@ -111,7 +111,7 @@ export default function ServicesPage() {
   return (
     <div className="bg-white dark:bg-gray-900">
       {/* Hero Section */}
-      <div className="bg-blue-600 dark:bg-blue-800">
+      <div className="bg-blue-600 dark:bg-blue-800" style={{ marginTop: '6rem' }}>
         <div className="container mx-auto px-4 py-16 md:py-24">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Our Services</h1>

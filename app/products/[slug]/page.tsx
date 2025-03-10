@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft, Check, Download } from 'lucide-react';
-
+import Image from 'next/image';
 // This would normally come from a database or API
 const products = [
   {
@@ -10,7 +10,7 @@ const products = [
     category: 'Control Systems',
     description: 'Advanced elevator control system with integrated safety features and energy efficiency.',
     longDescription: 'The BT-5000 Control System represents the pinnacle of elevator control technology, offering unparalleled safety features, energy efficiency, and smart building integration capabilities. Designed for high-rise buildings and premium installations, this system provides smooth operation, precise floor leveling, and comprehensive monitoring capabilities.',
-    image: '/images/products/control-system-1.jpg',
+    image: '/images/products/control-system-1.jpeg',
     features: ['Energy efficient', 'Advanced safety protocols', 'Remote monitoring', 'Compact design'],
     specifications: [
       { name: 'Dimensions', value: '400 x 300 x 120 mm' },
@@ -33,7 +33,7 @@ const products = [
     category: 'Control Systems',
     description: 'Mid-range control panel suitable for residential and small commercial buildings.',
     longDescription: 'The BT-3000 Control Panel is our mid-range solution perfect for residential buildings and small commercial installations. It combines reliability with cost-effectiveness, providing all essential control functions while maintaining high safety standards and ease of installation.',
-    image: '/images/products/control-system-2.jpg',
+    image: '/images/products/control-system-2.jpeg',
     features: ['User-friendly interface', 'Reliable performance', 'Easy installation', 'Cost-effective'],
     specifications: [
       { name: 'Dimensions', value: '350 x 280 x 100 mm' },
@@ -55,11 +55,14 @@ const products = [
 
 type Props = {
   params: { slug: string }
+  searchParams?: { [key: string]: string | string[] | undefined }
 };
 
 // Generate metadata for the page
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const product = products.find(p => p.slug === params.slug);
+  // Properly await the params object
+  const slug = await params.slug;
+  const product = products.find(p => p.slug === slug);
   
   if (!product) {
     return {
@@ -73,12 +76,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function ProductPage({ params }: Props) {
-  const product = products.find(p => p.slug === params.slug);
+export default async function ProductPage({ params }: Props) {
+  // Properly await the params object
+  const slug = await params.slug;
+  const product = products.find(p => p.slug === slug);
   
   if (!product) {
     return (
-      <div className="container mx-auto px-4 py-16 text-center">
+      <div className="container mx-auto px-4 py-16 text-center"style={{ marginTop: '6rem' }}>
         <h1 className="text-3xl font-bold mb-4">Product Not Found</h1>
         <p className="mb-8">The product you're looking for doesn't exist or has been removed.</p>
         <Link 
@@ -123,17 +128,17 @@ export default function ProductPage({ params }: Props) {
         </div>
 
         {/* Product Details */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12" style={{ marginTop: '6rem' }}>
           {/* Product Image */}
           <div className="bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden h-96 relative">
             {/* Placeholder for product image */}
             {/* Uncomment when images are available */}
-            {/* <Image 
-              src={product.image} 
-              alt={product.name} 
-              fill 
-              className="object-contain p-8" 
-            /> */}
+              <Image 
+                src={product.image} 
+                alt={product.name} 
+                fill 
+                className="object-contain p-8" 
+              />
             <div className="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-md">
               {product.category}
             </div>
